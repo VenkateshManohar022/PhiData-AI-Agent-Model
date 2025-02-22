@@ -4,3 +4,4 @@ Python-Framework/
 __pycache__/
 Python-App
 1_vector_db
+.env
