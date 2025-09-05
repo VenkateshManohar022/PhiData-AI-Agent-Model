@@ -9,7 +9,9 @@ from telegram_tool import TelegramTool, ParserTool
 load_dotenv()
 os.environ["OPENROUTER_API_KEY"] = os.getenv("OPENROUTER_API_KEY")
 
+# MODAL = "llama3.1:8b"
 MODAL = "deepseek/deepseek-chat-v3.1:free"
+# MODAL = "google/gemma-3n-e2b-it:free"
 
 # Initialize Telegram tool
 telegram_tool = TelegramTool(
@@ -32,7 +34,7 @@ website_data_extraction_agent = Agent(
     instructions=[
         "Scrape the website URL provided by the user.",
         "Extract and summarize the main textual content to under 1000 words.",
-        "Do not include any URLs or formatting in the summary.",
+        "Do not include any URLs or formatting in the summary."
     ],
     show_tool_calls=True,
     debug_mode=True,
@@ -101,10 +103,9 @@ manager_agent = Agent(
 )
 
 # --- Playground App ---
-# CRITICAL CHANGE: Pass all agents to the Playground
 app = Playground(
     agents=[manager_agent, website_data_extraction_agent, script_preparation_agent]
 ).get_app()
 
 if __name__ == "__main__":
-    serve_playground_app("agent_app:app", reload=True)
+    serve_playground_app("api_playground:app", reload=True)
