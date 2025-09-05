@@ -5,3 +5,7 @@ __pycache__/
 Python-App
 1_vector_db
 .env
+
+app_local_streamlit.py
+app_local_streamlit.py
+gradio_agent.py
